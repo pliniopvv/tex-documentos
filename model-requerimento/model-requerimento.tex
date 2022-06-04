@@ -1,0 +1,138 @@
+%COMANDOS SOBREÇALENTES
+%	\addcontentsline{toc}{chapter}{TEXTO}
+
+
+%
+%
+%
+%		NO MEU PC
+%
+%
+%
+
+
+\documentclass[12pt,a4paper,oneside,sumario=tradicional,brazil]{abntex2}
+\usepackage[utf8]{inputenc}
+%SETANDO FONTE COMO ARIAL
+\usepackage[]{helvet}
+\renewcommand{\rmdefault}{phv}
+%SETANDO CORES NA TABELA
+\usepackage[table]{xcolor}
+%MESCLANDO CÉLULAS VERTICAL
+\usepackage{multirow}
+%COLOCANDO FIGURAS
+\usepackage{graphicx}
+\usepackage{float}
+%EVITANDO HIFENIZAÇÃO
+%\hyphenpenalty=10000
+%INCLUINDO PDFS
+\usepackage{pdfpages}
+
+% CONFIGURANDO ANEXOS
+\newcommand{\anexo}[1]{
+	
+%	\addtocounter{anexo}{1}
+%	\newpage
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\begin{center}
+		\textbf{#1}
+		\addcontentsline{toc}{chapter}{#1}
+	\end{center}
+	\newpage
+}
+
+% CONFIGURANDO CABEÇALHO.
+\makepagestyle{LRA}
+%LAUDO DE AVALIAÇÃO AMBIENTAL DE  EMISSÕES  ATMOSFÉRICAS (FUMAÇA PRETA) EM VEÍCULOS A DIESEL NO EMPREENDIMENTO HELIO FRANCISCO DE MOURA ME.
+\makeoddhead{LRA}{}{\scriptsize{\underline{E-AMBIENTAL.COM.BR - OFÍCIO – N. 0001-2018} \\}}{\scriptsize{\underline{Página \thepage\ de \thelastpage}}}
+
+%\makeoddfoot{LRA}{}{\scriptsize{Dr. Euclides Antônio Pereira de Lima – CRQ MG: 02301286/ CREA 088801-D \\ Eng. Químico/Eng. Seg. do Trabalho – Rua Das Andorinhas, 540 - Cidade Jardim – Uberlândia – MG}}{}
+\makeoddfoot{LRA}{}{\scriptsize{(34) 9 9225-0866 - Plínio Victor Palmezano de Velloso Vianna - www.e-ambiental.com.br}}{}
+
+%\makeoddfoot{LRA}{}{\scriptsize{\underline{Dr. Euclides Antônio Pereira de Lima – CRQ MG: 02301286/ CREA 088801-D} \\ \underline{Eng. Químico/Eng. Seg. do Trabalho – Rua Das Andorinhas, 540 - Cidade Jardim – Uberlândia – MG}}}{}
+% CONFIGURANDO ESTILO DO CABEÇALHO.
+\makechapterstyle{section}{
+	\renewcommand{\printchaptername}{}
+	\renewcommand{\chapternamenum}{}
+	\renewcommand{\chaptitlefont}{\normalsize}
+	\renewcommand{\chapnumfont}{\normalfont\normalsize\bfseries}
+	\renewcommand{\printchapternum}{\chapnumfont \thechapter\space}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\afterchapskip}{\onelineskip}
+	\renewcommand{\beforechapskip}{0pt}
+}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\chapterstyle{section}
+
+%CONFIGURAÇÃO DA NUMERAÇÃO DA PÁGINA.
+%\setcounter{page}{2000}
+%\addtocounter{anexo}{1}
+
+%INICIANDO DOCUMENTO
+
+\begin{document}
+	\textual
+	\pagestyle{LRA}
+	\aliaspagestyle{chapter}{LRA}
+	
+	\
+	
+	\begin{flushright}
+		Uberlândia, \today
+	\end{flushright}
+	
+%	Exmo. Sr(a). var.contato \\ %superintendente;
+%	Presidente da Fundação Estadual do Meio Ambiente – FEAM-MG. \\
+%	Belo Horizonte – MG. \\
+	
+	\noindent
+	Ilmo Sr(a). José Vítor de Resende Aguiar \\ %superintendente;
+	Superintendente da Supram Triângulo Mineiro e Alto Paranaíba \\
+	Uberlândia - MG \\
+	
+	\textbf{Assunto:} var.assunto \\
+	
+		var.mensagem
+	
+	\begin{center}
+		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+		Plínio Victor Palmezano de Velloso Vianna \\
+		Eng. Ambiental - CREA 4779DRO \\
+	\end{center}
+	
+%	\setcounter{page}{3}
+%	\addtocounter{page}{+1}
+	
+\end{document}

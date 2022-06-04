@@ -1,0 +1,55 @@
+\documentclass[12pt,a4paper,oneside,sumario=tradicional,brazil]{abntex2}
+\usepackage[utf8]{inputenc}
+% set font arial
+\usepackage[]{helvet}
+\renewcommand{\rmdefault}{phv}
+% set table colors
+\usepackage[table]{xcolor}
+%mesclando células vertical
+\usepackage{multirow}
+%colocando figuras
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{subfig}
+% para plotagem de gráficos
+\usepackage{pgfplots}   % pacote para uso do pgfplots
+\pgfplotsset{width=1.0\linewidth,compat=1.11}
+%\pgfplotsset{width=8cm,compat=1.11}
+%\pgfplotsset{height=0.8\textheight,compat=1.11}
+% pasta para imagens
+\graphicspath{{temp/imagens/}}
+
+% CONFIGURANDO CABEÇALHO
+\makepagestyle{LRA}
+\makeoddhead{LRA}{}{\scriptsize{\underline{[CABEÇALHO]} \\}}{\scriptsize{\underline{Página \thepage\ de \thelastpage}}}
+%\makeevenhead{LRA}{}{\scriptsize{\underline{RA 0086-2014 Laudo de Avaliação Ambiental de Ruído – Cerâmica União Ituiutaba Ltda.  Outubro / 2014} \\}}{\scriptsize{\underline{Página \thepage\ de \thelastpage}}}
+%\addtocounter{page}{1} % ADICIONANDO +1 PÁGINA PARA CONTAR A CAPA DO TRABALHO
+% CONFIGURANDO CABEÇALHO - FIM
+
+% CONFIGURANDO O ESTILO DO CABEÇALHO
+\makechapterstyle{section}{
+	\renewcommand{\printchaptername}{}
+	\renewcommand{\chapternamenum}{}
+	\renewcommand{\chaptitlefont}{\normalsize}
+	\renewcommand{\chapnumfont}{\normalfont\normalsize\bfseries}
+	\renewcommand{\printchapternum}{\chapnumfont \thechapter\space}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\afterchapskip}{\onelineskip}
+	\renewcommand{\beforechapskip}{0pt}
+}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+
+\chapterstyle{section}
+% CONFIGURANDO O ESTILO DO CABEÇALHO - FIM
+
+
+\begin{document}
+\textual
+\pagestyle{LRA}
+%\aliaspagestyle{chapter}{LRA}
+
+[CORPO-DO-TEXTO] \\
+
+
+\end{document}

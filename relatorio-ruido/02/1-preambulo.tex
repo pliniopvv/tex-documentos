@@ -1,0 +1,269 @@
+\usepackage[utf8]{inputenc}
+% set font arial
+\usepackage[]{helvet}
+\renewcommand{\rmdefault}{phv}
+% set table colors
+\usepackage[table]{xcolor}
+%mesclando células vertical
+\usepackage{multirow}
+%colocando figuras
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{subfig}
+% para plotagem de gráficos
+\usepackage{pgfplots}   % pacote para uso do pgfplots
+\pgfplotsset{width=1.0\linewidth,compat=1.11}
+%\pgfplotsset{width=8cm,compat=1.11}
+%\pgfplotsset{height=0.8\textheight,compat=1.11}
+% pasta para imagens
+\graphicspath{{temp/imagens/}}
+
+%\usepackage{lipsum} %módulo para testes
+
+
+%Configuração do ambiente Grafico
+\newcommand{\dados}[2]{
+	\addplot[color=#1] coordinates {
+		#2
+	};
+}
+\newenvironment{Grafico}{ %colocar os dados no meio e as legendas.
+	\begin{tikzpicture}
+	\begin{axis}[
+	%ymin=0,
+	minor tick num=4,
+	enlarge x limits=false,
+	every axis plot post/.append style=
+	{mark=none},
+	const plot,
+	legend style={
+		area legend,
+		at={(0.5,-0.25)},
+		anchor=north,
+		legend columns=-1},
+	ylabel=dB(A),
+	xlabel=Segundos
+	]
+}{
+\end{axis}
+\end{tikzpicture}
+}
+
+%Nova configuração da página dos pontos
+\newenvironment{Ponto}[1]{
+	\addtocounter{#1}{1}
+	\section{Resultados do ponto \arabic{#1}}
+	\begin{SingleSpace}
+		\begin{table}[h]
+			\centering
+			\caption{Resultado do ponto \arabic{#1}.}
+		}{
+	\end{table}
+\end{SingleSpace}
+}
+\newenvironment{PontoTabela}{
+	\begin{tabular}{|>{\centering\arraybackslash}m{1.7cm}|>{\centering\arraybackslash}m{2.0cm}|@{}>{\centering\arraybackslash}m{1.1cm}@{}|@{}>{\centering\arraybackslash}m{1cm}@{}|@{}>{\centering\arraybackslash}m{1.4cm}@{}|@{}>{\centering\arraybackslash}m{1.2cm}@{}|@{}>{\centering\arraybackslash}m{1.2cm}@{}|@{}>{\centering\arraybackslash}m{1.5cm}@{}|>{\centering\arraybackslash}m{4cm}|}
+		\cline{1-3}
+	}{
+\end{tabular}
+}
+\newcommand{\fileName}[1]{
+	\textbf{\cellcolor{black!25} Arquivo} & \multicolumn{4}{|c|}{\textbf{\cellcolor{black!25} #1}} & \multicolumn{4}{|c}{} \\ \cline{1-5}
+}
+\newcommand{\fileInit}[1]{
+	Início & \multicolumn{4}{|c|}{#1} & \multicolumn{4}{|c}{}  \\ \cline{1-5}
+}
+\newcommand{\fileFim}[1]{
+	Fim & \multicolumn{4}{|c|}{#1} & \multicolumn{4}{|c}{} \\ \hline
+}
+\newcommand{\fileInfo}[5]{
+	Canal & Tipo & Peso & Un & LAeq Bruto & Lmin & Lmax & LAeq Tratado & Arredondamento conforme NBR 10151/2000 \\ \hline
+	5016 & LAeq  & A & dB & #1 & #2 & #3 & #4 & \cellcolor{black!25} #5 \\ \hline
+}
+
+%Configurações da página dos pontos
+
+%\newcommand{\grafico}[2]{\ref{#1\arabic{#1}#2}}
+%\newcommand{\primeirografico}[1]{\ref{primeiro_grafico_#1}}
+%\newcommand{\ultimografico}[1]{\ref{ultimo_grafico_#1}}
+\newcommand{\ponto}[1]{\arabic{#1}}
+
+%Configurações da página dos anexos
+\newcounter{anexo}
+\newcommand{\anexo}[1]{
+	\addtocounter{anexo}{1}
+	\newpage
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\
+	
+	\begin{center}
+		\textbf{ANEXO \arabic{anexo} - #1}
+		\addcontentsline{toc}{chapter}{ANEXO \arabic{anexo} - #1}
+	\end{center}
+	\newpage
+}
+
+%\newcommand{\primeiratabela}[1]{\ref{primeira_tabela_#1}}
+%\newcommand{\ultimatabela}[1]{\ref{ultima_tabela_#1}}
+%\newcommand{\setprimeiratabela}[1]{\label{primeira_tabela_#1}}
+%\newcommand{\setultimatabela}[1]{\label{ultima_tabela_#1}}
+%\newcommand{\setprimeirografico}[1]{\label{grafico:#1:\ponto{#1}}}
+%\newcommand{\setultimografico}[1]{\label{grafico:#1:\ponto{#1}}}
+
+%Configurações da página das fotos
+\newcommand{\primeirafoto}{\ref{foto_primeira}}
+\newcommand{\ultimafoto}{\ref{foto_ultima}}
+
+\newcommand{\DuasFotosDoPonto}[5]{% \DuasFotosDoPonto{NomeDaPrimeiraFoto.jpg}{Descrição da primeira foto}{NomeDaSegundaFoto.jpg}{Descrição da segunda foto}{Marcar qual foto? 0=Nenhuma|1=Primeira|2=Segunda}
+	\begin{minipage}{\linewidth}
+		\centering
+		\begin{minipage}{0.45\linewidth}
+			\begin{figure}[H]
+				\includegraphics[width=8cm]{#1}
+				\caption{#2}
+				\ifnum #5 = 1
+				\label{foto_primeira}
+				\else
+				\fi
+			\end{figure}
+		\end{minipage}
+		\hspace{0.05\linewidth}
+		\begin{minipage}{0.45\linewidth}
+			\begin{figure}[H]
+				\includegraphics[width=8cm]{#3}
+				\caption{#4}
+				\ifnum #5 = 2
+				\label{foto_ultima}
+				\else
+				\fi
+			\end{figure}
+		\end{minipage}
+	\end{minipage}
+}
+
+\newcommand{\UmaFotoDoPonto}[3]{% \UmaFotoDoPonto{NomeDaFoto.jpg}{Descrição da Foto}{Marcar a foto como ultima? 0=Não|1=Sim}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{#1}
+		\caption{#2}
+		\ifnum #3 = 1
+		\label{foto_ultima}
+		\else
+		\fi
+	\end{figure}
+}
+
+% CONFIGURANDO CABEÇALHO
+\makepagestyle{LRA}
+\makeoddhead{LRA}{}{\scriptsize{\underline{\input{temp/cabecalho.tex}} \\}}{\scriptsize{\underline{Página \thepage\ de \thelastpage}}}
+%\makeevenhead{LRA}{}{\scriptsize{\underline{RA 0086-2014 Laudo de Avaliação Ambiental de Ruído – Cerâmica União Ituiutaba Ltda.  Outubro / 2014} \\}}{\scriptsize{\underline{Página \thepage\ de \thelastpage}}}
+%\addtocounter{page}{1} % ADICIONANDO +1 PÁGINA PARA CONTAR A CAPA DO TRABALHO
+% CONFIGURANDO CABEÇALHO - FIM
+
+% CONFIGURANDO O ESTILO DO CABEÇALHO
+\makechapterstyle{section}{
+	\renewcommand{\printchaptername}{}
+	\renewcommand{\chapternamenum}{}
+	\renewcommand{\chaptitlefont}{\normalsize}
+	\renewcommand{\chapnumfont}{\normalfont\normalsize\bfseries}
+	\renewcommand{\printchapternum}{\chapnumfont \thechapter\space}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\afterchapskip}{\onelineskip}
+	\renewcommand{\beforechapskip}{0pt}
+}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+
+\chapterstyle{section}
+% CONFIGURANDO O ESTILO DO CABEÇALHO - FIM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\newenvironment{TabelaResumo}{
+%\begin{table}[h]
+%\centering
+%\begin{scriptsize}
+%}{
+%\end{scriptsize}
+%\end{table}
+%}
+%\newenvironment{DadosResumo}{
+%\begin{tabular}{|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|>{\centering\arraybackslash}m{1.3cm}|}
+%}{
+%\hline
+%\end{tabular}
+%}
+%\newcommand{\titleResumo}[3]{
+%
+%\hline
+%\multicolumn{9}{|c|}{\cellcolor{black!25} \textbf{#1}} \\
+%\multicolumn{9}{|c|}{\cellcolor{black!25} \textbf{#2}} \\
+%\hline
+%Número do Ponto & Número da Tabela & LAeq  Dados brutos dB(A) & LAeq Dados Tratados dB(A) & Lc (componentes tonais/impulsivos) dB(A) & Lra (Ruído Ambiente) dB(A) & NCA dB(A) da 10151/2000 & NCA Corrigido em relação ao Lra dB(A) & Comparação do LAeq Dados tratados com NCA (ou NCA corrigido) (NBR 10151/2000 ) \\ \hline
+%\\
+%}
+%%Primeira linha e suas variações
+%\newcommand{\firstLineResumoAprovedByNormalNCA}[6]{
+%\nextRow & \nextDot & #1 & \cellcolor{black!25} #2 &\cellcolor{black!25}  #3 & #4 & \multirow{\tablerows}{*}{\textcolor{blue}{#5}} &\cellcolor{black!25} #6 & \textcolor{blue}{Atende} \\ \cline{1-6} \cline{7-9}
+%}
+%\newcommand{\firstLineResumoAprovedByLra}[6]{
+%	\nextRow & \nextDot & #1 & \cellcolor{black!25} #2 &\cellcolor{black!25}  #3 & \textcolor{red}{#4} & \multirow{\tablerows}{*}{\textcolor{blue}{#5}} & \cellcolor{black!25} #6 & \textcolor{blue}{Atende} \\ \cline{1-6} \cline{7-9}
+%}
+%\newcommand{\firstLineResumoReprovedByNormalNCA}[6]{
+%	\nextRow & \nextDot & #1 & \cellcolor{black!25} #2 &\cellcolor{black!25}  #3 & #4 & \multirow{\tablerows}{*}{\textcolor{blue}{#5}} & \cellcolor{black!25} #6 &  \textcolor{red}{Não Atende} \\ \cline{1-6} \cline{7-9}
+%}
+%% Próximas linhas e suas variações
+%\newcommand{\nextLineAprovedByNormalNCA}[5]{
+%	\nextRow & \nextDot & #1 &\cellcolor{black!25} #2 &\cellcolor{black!25} #3 & #4 & & \cellcolor{black!25} \textcolor{blue}{#5} & \textcolor{blue}{Atende} \\ \cline{1-6} \cline{7-9}
+%}
+%\newcommand{\nextLineAprovedByLra}[5]{
+%	\nextRow & \nextDot & #1 &\cellcolor{black!25} #2 &\cellcolor{black!25} #3 & \textcolor{red}{#4} & &\cellcolor{black!25} \textcolor{blue}{#5} & \textcolor{blue}{Atende} \\ \cline{1-6} \cline{7-9}
+%}
+%\newcommand{\nextLineReprovedByNormalNCA}[5]{
+%	\nextRow & \nextDot & #1 &\cellcolor{black!25} #2 &\cellcolor{black!25} #3 & #4 & &\cellcolor{black!25} \textcolor{blue}{#5} & \textcolor{red}{Não Atende} \\ \cline{1-6} \cline{7-9}
+%}
